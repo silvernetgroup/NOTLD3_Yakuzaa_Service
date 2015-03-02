@@ -1,0 +1,103 @@
+﻿@model IEnumerable<YakuzaWebApi.Models.GameSession>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dokumentacja API</h2>
+
+Gałąź do zapytań : {host}/api/game/{nazwametody} <br />
+
+[GET] <br/>
+<head>
+    <style>
+        wazne {color:red;font-size:large}
+    </style>
+</head>
+<b>/api/game/GetGameSession/{id} </b><br /> 
+    return GameSession lub Error : {input parameters}<br /> 
+
+<b>/api/game/CreateGameSession/{username}</b><br />
+   return GameSession lub Error : {input parameters}<br /> 
+
+<b>/api/game/JoinSession/{username}/{sessionid}</b><br />
+    return Success lub Error : {input parameters}<br />
+
+<b>/api/game/GetSessions</b><br />
+    return sessionlist<br />  
+
+<b>/api/game/GetGameEvent/{id} </b><br />
+    return GameEvent lub Error : {input parameters}<br />
+
+<b>/api/game/AddGameEvent/{gamesessionid}/{textcontent}/{isonlyformafia}/{username} </b><br />
+    return Success lub Error : {input parameters}<br />
+
+  <b>/api/game/CreateUser/{username}</b><br />
+   return User lub "Already exists" lub  Error : {input parameters}<br />  
+
+<b>/api/game/SetMafiosoForGame/{username1}/{username2}/{gamesessionid} </b><br />
+    return chuj lub nie chuj<br />
+
+<b>/api/game/GetUser/{username}</b><br />
+   return User lub "ni ma go"<br /> 
+
+<b>/api/game/GetVotes/{gamesessionid}</b><br />
+   return Lista głosów dla danej gry<br />
+
+<b>/api/game/VoteUser/{votedusername}/{gamesessionid}</b><br />
+Głosowanie NA osobę votedusername<br />
+    return Success lub Error : {input parameters}<br />
+
+<b>/api/game/KillUser/{username}/{gamesessionid}</b><br />
+<br />
+<wazne><b> Uwaga metoda zabija usera i czyści listę głosów dla danego Gamesession</b></wazne><br />
+<br />
+    return Success lub Error : {input parameters}<br />
+
+
+<br /> 
+<br /> 
+Przykładowe użycie<br />
+
+http://localhost:43652/api/game/JoinSession?username=Marian&sessionid=1 <br />
+http://localhost:43652/api/game/CreateGameSession?username=Marian <br />
+http://localhost:43652/api/game/GetGameSession?id=1 <br />
+
+http://localhost:43652/api/game/AddGameEvent/1/cycki/false/marian <br />
+
+<br /><br /><br /><br />
+
+
+
+http://yakuza.azurewebsites.net/api/game/JoinSession?username=Marian&sessionid=1 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsNight)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsNight)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>*@
